@@ -1,18 +1,7 @@
 """认证接口测试"""
-import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app import store
-
-
-@pytest.fixture(autouse=True)
-def reset_store():
-    """每个测试前重置内存存储"""
-    store._users_db.clear()
-    store._user_id_counter = 0
-    yield
-
 
 client = TestClient(app)
 
